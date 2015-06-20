@@ -8,5 +8,16 @@ namespace MinhaEstante.Model
     class Editora
     {
         public string Nome { get; set; }
+        public List<Autor> Autores { get; set; }
+
+        public Editora()
+        {
+        }
+
+        public Editora(string nome, List<Autor> autores)
+        {
+            Nome = nome;
+            Autores = autores;
+        }
     }
 }

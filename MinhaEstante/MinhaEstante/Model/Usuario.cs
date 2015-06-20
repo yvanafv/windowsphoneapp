@@ -12,11 +12,14 @@ namespace MinhaEstante.Model
         public string Email { get; set; }
         public List<Livro> Livro { get; set; }
 
-        public Usuario(string nome, string email, List<Livro> livro)
+        public Usuario()
+        {
+        }
+
+        public Usuario(string nome, string email)
         {
             this.Nome = nome;
             this.Email = email;
-            this.Livro = livro;
         }
     }
 }

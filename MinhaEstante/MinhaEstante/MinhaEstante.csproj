@@ -90,6 +90,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Autor.cs" />
     <Compile Include="Model\Editora.cs" />
     <Compile Include="Model\Livro.cs" />
     <Compile Include="Model\Usuario.cs" />
