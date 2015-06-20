@@ -44,5 +44,30 @@ namespace MinhaEstante
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
         }
+
+        private void login(object sender, RoutedEventArgs e)
+        {
+            if(verificarLogin()) 
+            {
+                this.Frame.Navigate(typeof(),List<Usuario>)
+            }
+        }
+
+        private bool verificarLogin()
+        {
+            if (!String.IsNullOrEmpty(this.boxUsuario.Text)
+                && !String.IsNullOrEmpty(this.boxSenha.Password)
+                && this.boxUsuario.Text == "admin"
+                && this.boxSenha.Password == "admin")
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void cadastrar(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
