@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="MinhaEstante.View.PivotPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MinhaEstante.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+
+    <Grid>
+        <Pivot Name="PrincipalPivot"
+               Title="MINHA ESTANTE">
+            <PivotItem Header="meus livros">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="80" />
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock Grid.Row="0"
+                               Name="NomeUsuarioTextBox"
+                               Text="Bem vindo"
+                               FontSize="20"/>
+                    
+                    <ListView Grid.Row="1">
+                        <Rectangle Fill="Blue" Width="100" Height="100" Margin="12"/>
+                        <Rectangle Fill="Red" Width="100" Height="100" Margin="12"/>
+                    </ListView>
+
+
+                    <AppBarButton Grid.Row="2" 
+                                  Icon="Add"
+                                  Label="Adicionar livro" 
+                                  Name="AdicionarLivroButton"
+                                  Margin="100,0,0,0"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Bottom"
+                                  Click="AdicionarLivroButton_OnClick"/>
+
+                    <AppBarButton Grid.Row="2"
+                                  Icon="Remove"
+                                  Label="Remover livro"
+                                  Name="RemoverLivroButton"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Bottom"
+                                  Margin="100,0,0,0" 
+                                  Click="RemoverLivroButton_OnClick"/>
+                </Grid>
+            </PivotItem>
+            <PivotItem Header="empréstimos">
+                <Grid>
+
+                </Grid>
+            </PivotItem>
+        </Pivot>
+
+    </Grid>
+</Page>

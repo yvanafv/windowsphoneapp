@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MinhaEstante.Model
 {
-    class Usuario
+    public class Usuario
     {
         public string Nome { get; set; }
         public string Email { get; set; }
-        public List<Livro> Livro { get; set; }
+        public List<Livro> Livros { get; set; }
 
         public Usuario()
         {

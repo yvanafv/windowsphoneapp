@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MinhaEstante.Model
 {
-    class Autor
+    public class Autor
     {
         public string Nome { get; set; }
         public List<Editora> Editoras { get; set; }
