@@ -9,6 +9,13 @@ namespace MinhaEstante.Model
     {
         public string nome { get; set; }
         public Editora editora { get; set; }
+        public bool emprestado { get; set; }
+        public bool lido { get; set; }
 
+        public Livro()
+        {
+            this.emprestado = false;
+            this.lido = false;
+        }
     }
 }
