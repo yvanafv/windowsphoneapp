@@ -8,8 +8,15 @@ namespace MinhaEstante.Model
 {
     class Usuario
     {
-        public string nome { get; set; }
-        public string email { get; set; }
-        public List<Livro> livro { get; set; }
+        public string Nome { get; set; }
+        public string Email { get; set; }
+        public List<Livro> Livro { get; set; }
+
+        public Usuario(string nome, string email, List<Livro> livro)
+        {
+            this.Nome = nome;
+            this.Email = email;
+            this.Livro = livro;
+        }
     }
 }

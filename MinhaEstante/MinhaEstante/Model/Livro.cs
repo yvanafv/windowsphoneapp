@@ -7,15 +7,15 @@ namespace MinhaEstante.Model
 {
     class Livro
     {
-        public string nome { get; set; }
-        public Editora editora { get; set; }
-        public bool emprestado { get; set; }
-        public bool lido { get; set; }
+        public string Nome { get; set; }
+        public Editora Editora { get; set; }
+        public bool Emprestado { get; set; }
+        public bool Lido { get; set; }
 
-        public Livro()
+        public Livro(bool emprestado, bool lido)
         {
-            this.emprestado = false;
-            this.lido = false;
+            Emprestado = emprestado;
+            Lido = lido;
         }
     }
 }

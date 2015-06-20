@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using MinhaEstante.Model;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -45,29 +46,26 @@ namespace MinhaEstante
             // this event is handled for you.
         }
 
-        private void login(object sender, RoutedEventArgs e)
+        private bool VerificarLogin()
         {
-            if(verificarLogin()) 
+            return !string.IsNullOrEmpty(UsuarioTextBox.Text)
+                   && !string.IsNullOrEmpty(SenhaPasswordBox.Password)
+                   && UsuarioTextBox.Text == "admin"
+                   && SenhaPasswordBox.Password == "admin";
+        }
+
+
+        private void LoginButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (VerificarLogin())
             {
-                this.Frame.Navigate(typeof(),List<Usuario>)
+                //TODO Implementar passagem de tela 
             }
         }
 
-        private bool verificarLogin()
+        private void CadastrarButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if (!String.IsNullOrEmpty(this.boxUsuario.Text)
-                && !String.IsNullOrEmpty(this.boxSenha.Password)
-                && this.boxUsuario.Text == "admin"
-                && this.boxSenha.Password == "admin")
-            {
-                return true;
-            }
-            return false;
-        }
-
-        private void cadastrar(object sender, RoutedEventArgs e)
-        {
-
+            
         }
     }
 }

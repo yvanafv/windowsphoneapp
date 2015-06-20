@@ -7,6 +7,6 @@ namespace MinhaEstante.Model
 {
     class Editora
     {
-        public string nome { get; set; }
+        public string Nome { get; set; }
     }
 }
