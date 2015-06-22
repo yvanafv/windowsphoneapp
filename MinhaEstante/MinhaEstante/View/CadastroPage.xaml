@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="MinhaEstante.View.CadastroPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MinhaEstante.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="MinhaEstante" Margin="0,12,0,0"/>
+            <TextBlock Text="Cadastro" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}"/>
+        </StackPanel>
+        <Grid Grid.Row="1" Margin="19,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" Margin="0,12,0,12">
+                <TextBox Header="Nome" Text="{Binding Nome, Mode=TwoWay}" InputScope="Chat"/>
+                <TextBox Header="Email" Text="{Binding Email, Mode=TwoWay}" InputScope="EmailSmtpAddress"/>
+                <TextBox Header="Confirmar Email" Text="{Binding ConfirmaEmail, Mode=TwoWay}" InputScope="EmailSmtpAddress"/>
+                <TextBox Header="Senha" x:Name="PasswordTextBox" InputScope="Number" Text="{Binding Senha, Mode=TwoWay}" MaxLength="{Binding MaxLength, ElementName=UserControl}" KeyUp="PasswordTextBox_KeyUp"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Content="Salvar" Icon="Accept" Command="{Binding CreateOrUpdateCommand}"
+                          CommandParameter="{Binding}" Margin="0,0,80,0"/>
+            <AppBarButton Content="Cancelar" Icon="Cancel" />
+        </CommandBar>
+    </Page.BottomAppBar>
+
+
+</Page>
