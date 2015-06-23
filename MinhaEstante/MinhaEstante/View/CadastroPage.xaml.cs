@@ -1,4 +1,5 @@
 ﻿using MinhaEstante.Common;
+using MinhaEstante.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -118,9 +119,16 @@ namespace MinhaEstante.View
 
         #endregion
 
-        private void PasswordTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        //Não utilizando Binding no momento, se preciso alterar depois
+        //private void CreateOrUpdateCommand()
+        //{
+        //    Frame.Navigate(typeof(PivotPage), new Usuario(NomeTextBox.Text, EmailTextBox.Text, SenhaPasswordBox.Password));
+        //}
 
+        //Usando método Click do botão
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(PivotPage), new Usuario(NomeTextBox.Text, EmailTextBox.Text, SenhaPasswordBox.Password));
         }
     }
 
