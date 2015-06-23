@@ -39,7 +39,7 @@ namespace MinhaEstante.View
 
         public void CadastrarButton_OnClick(object sender, RoutedEventArgs e)
         {
-            
+            Frame.Navigate(typeof(CadastroPage));
         }
     }
 }
