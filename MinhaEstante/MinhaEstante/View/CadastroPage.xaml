@@ -23,10 +23,10 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Vertical" Margin="0,12,0,12">
-                <TextBox Header="Nome" Text="{Binding Nome, Mode=TwoWay}" InputScope="Chat"/>
-                <TextBox Header="Email" Text="{Binding Email, Mode=TwoWay}" InputScope="EmailSmtpAddress"/>
-                <TextBox Header="Confirmar Email" Text="{Binding ConfirmaEmail, Mode=TwoWay}" InputScope="EmailSmtpAddress"/>
-                <TextBox Header="Senha" x:Name="PasswordTextBox" InputScope="Number" Text="{Binding Senha, Mode=TwoWay}" MaxLength="{Binding MaxLength, ElementName=UserControl}" KeyUp="PasswordTextBox_KeyUp"/>
+                <TextBox Header="Nome" Text="{Binding Nome, Mode=TwoWay}" InputScope="Chat" PlaceholderText="Digite seu nome"/>
+                <TextBox Header="Email" Text="{Binding Email, Mode=TwoWay}" InputScope="EmailSmtpAddress" PlaceholderText="Digite seu email"/>
+                <TextBox Header="Confirmar Email" Text="{Binding ConfirmaEmail, Mode=TwoWay}" InputScope="EmailSmtpAddress" PlaceholderText="Digite seu email novamente"/>
+                <TextBox Header="Senha" x:Name="PasswordTextBox" InputScope="Number" Text="{Binding Senha, Mode=TwoWay}" MaxLength="{Binding MaxLength, ElementName=UserControl}" KeyUp="PasswordTextBox_KeyUp" TextChanged="PasswordTextBox_TextChanged" PlaceholderText="Digite sua senha"/>
             </StackPanel>
         </Grid>
     </Grid>

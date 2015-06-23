@@ -117,6 +117,11 @@ namespace MinhaEstante.View
         }
 
         #endregion
+
+        private void PasswordTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 
 }
