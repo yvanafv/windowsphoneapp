@@ -9,14 +9,17 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Margin="10">
-        <StackPanel Grid.Row="0">
-            <TextBlock Text="MINHA ESTANTE" 
-                       Style="{ThemeResource TitleTextBlockStyle}"
-                       Margin="0,12,0,0"/>
-            <TextBlock Text="bem vindo" 
-                       Margin="0,-6.5,0,26.5" 
-                       Style="{ThemeResource HeaderTextBlockStyle}" 
-                       CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        <StackPanel Orientation="Vertical" Margin="0,12,0,12">
+            <TextBox Header="Nome" DataContext="{Binding SelectedLivro}" Text="{Binding Titulo, Mode=TwoWay}"/>
+            <TextBox Header="Email" DataContext="{Binding SelectedLivro}" Text="{Binding Autor, Mode=TwoWay}"/>
         </StackPanel>
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Content="Salvar" Icon="Save" Command="{Binding UpdateLivro}" 
+                          CommandParameter="{Binding SelectedLivro}" 
+                          Click="AppBarButton_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>

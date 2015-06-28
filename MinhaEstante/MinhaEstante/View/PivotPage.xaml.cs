@@ -19,20 +19,28 @@ namespace MinhaEstante.View
 
     public sealed partial class PivotPage : Page
     {
+        private ViewModel.LivroViewModel livroViewModel { get; set; }
+
         public PivotPage()
         {
             this.InitializeComponent();
+
+            this.NavigationCacheMode = NavigationCacheMode.Required;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             var usuario = (Usuario) e.Parameter;
             if (usuario != null) NomeUsuarioTextBox.Text = "Bem vindo " + usuario.Nome.ToString() + "!";
+
+            this.livroViewModel = new ViewModel.LivroViewModel();
+            this.Livros.DataContext = this.livroViewModel;
         }
 
         private void AdicionarLivroButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            this.livroViewModel.EditLivro.Execute(new Model.Livro());
+ 
         }
 
         private void RemoverLivroButton_OnClick(object sender, RoutedEventArgs e)

@@ -23,19 +23,19 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Vertical" Margin="0,12,0,12">
-                <TextBox Header="Nome" x:Name="NomeTextBox" Text="{Binding Nome, Mode=TwoWay}" InputScope="Chat" PlaceholderText="Digite seu nome"/>
-                <TextBox Header="Email" x:Name="EmailTextBox" Text="{Binding Email, Mode=TwoWay}" InputScope="EmailSmtpAddress" PlaceholderText="Digite seu email"/>
+                <TextBox Header="Nome" x:Name="NomeTextBox" DataContext="{Binding SelectedUsuario}" Text="{Binding Nome, Mode=TwoWay}" InputScope="Chat" PlaceholderText="Digite seu nome"/>
+                <TextBox Header="Email" x:Name="EmailTextBox" DataContext="{Binding SelectedUsuario}" Text="{Binding Email, Mode=TwoWay}" InputScope="EmailSmtpAddress" PlaceholderText="Digite seu email"/>
                 <TextBox Header="Confirmar Email" x:Name="ConfirmaEmailTextBox" Text="{Binding ConfirmaEmail, Mode=TwoWay}" InputScope="EmailSmtpAddress" PlaceholderText="Digite seu email novamente"/>
-                <PasswordBox Header="Senha" x:Name="SenhaPasswordBox" Password="{Binding Senha, Mode=TwoWay}" MaxLength="{Binding MaxLength, ElementName=UserControl}" PlaceholderText="Digite sua senha"/>
+                <PasswordBox Header="Senha" x:Name="SenhaPasswordBox" DataContext="{Binding SelectedUsuario}" Password="{Binding Senha, Mode=TwoWay}" MaxLength="{Binding MaxLength, ElementName=UserControl}" PlaceholderText="Digite sua senha"/>
             </StackPanel>
         </Grid>
     </Grid>
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Content="Salvar" Icon="Accept" Command="{Binding CreateOrUpdateCommand}" Click="AppBarButton_Click"
-                          CommandParameter="{Binding}" Margin="0,0,80,0"/>
-            <AppBarButton Content="Cancelar" Icon="Cancel" Click="AppBarButton_Click_1"/>
+            <AppBarButton Content="Salvar" Icon="Accept" Command="{Binding UpdateContato}" Click="AppBarButtonSalvar_Click"
+                          CommandParameter="{Binding SelectedUsuario}" Margin="0,0,80,0"/>
+            <AppBarButton Content="Cancelar" Icon="Cancel" Click="AppBarButtonCancelar_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 

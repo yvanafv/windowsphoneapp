@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MinhaEstante.Common;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,24 @@ namespace MinhaEstante.View
     /// </summary>
     public sealed partial class NovoLivroPage : Page
     {
+        private NavigationHelper navigationHelper;
+        private ObservableDictionary defaultViewModel = new ObservableDictionary();
+
         public NovoLivroPage()
         {
             this.InitializeComponent();
+
+            this.navigationHelper = new NavigationHelper(this);
+        }
+
+        public NavigationHelper NavigationHelper
+        {
+            get { return this.navigationHelper; }
+        }
+
+        public ObservableDictionary DefaultViewModel
+        {
+            get { return this.defaultViewModel; }
         }
 
         /// <summary>
@@ -34,6 +50,14 @@ namespace MinhaEstante.View
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.navigationHelper.OnNavigatedTo(e);
+
+            this.DataContext = (ViewModel.LivroViewModel)e.Parameter;
+        }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

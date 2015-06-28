@@ -6,12 +6,29 @@ using System.Threading.Tasks;
 
 namespace MinhaEstante.Model
 {
+    [SQLite.Table("Usuario")]
     public class Usuario
     {
+        [SQLite.Column("ID")]
+        [SQLite.PrimaryKey]
+        [SQLite.AutoIncrement]
+        public int? ID { get; set; }
+
+        [SQLite.Column("Nome")]
+        [SQLite.MaxLength(100)]
+        [SQLite.NotNull]
         public string Nome { get; set; }
+
+        [SQLite.Column("Email")]
+        [SQLite.MaxLength(100)]
+        [SQLite.NotNull]
         public string Email { get; set; }
+
+        [SQLite.Column("Senha")]
+        [SQLite.MaxLength(100)]
+        [SQLite.NotNull]
         public string Senha { get; set; }
-        public List<Livro> Livros { get; set; }
+        //public List<Livro> Livros { get; set; }
 
         public Usuario()
         {

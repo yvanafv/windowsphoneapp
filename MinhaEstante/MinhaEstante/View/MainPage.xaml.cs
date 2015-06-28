@@ -33,7 +33,7 @@ namespace MinhaEstante.View
         {
             if (VerificarLogin())
             {
-                Frame.Navigate(typeof (PivotPage), new Usuario(UsuarioTextBox.Text, SenhaPasswordBox.Password));
+                Frame.Navigate(typeof (PivotPage), new Usuario("admin", UsuarioTextBox.Text, SenhaPasswordBox.Password));
             }
         }
 

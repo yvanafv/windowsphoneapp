@@ -23,10 +23,31 @@
                                Name="NomeUsuarioTextBox"
                                Text="Bem vindo"
                                FontSize="20"/>
-                    
-                    <ListView Grid.Row="1">
-                        <Rectangle Fill="Blue" Width="100" Height="100" Margin="12"/>
-                        <Rectangle Fill="Red" Width="100" Height="100" Margin="12"/>
+
+                    <ListView Name="Livros" ItemsSource="{Binding ListaDeLivros, Mode=TwoWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Button>
+                                    <Button.Flyout>
+                                        <MenuFlyout>
+                                            <MenuFlyoutItem Text="Editar" Command="{Binding ElementName=Livros, Path=DataContext.EditLivro}" CommandParameter="{Binding}"/>
+                                            <MenuFlyoutSeparator/>
+                                            <MenuFlyoutItem Text="Excluir" Command="{Binding ElementName=Livros, Path=DataContext.DeleteLivro}" CommandParameter="{Binding}"/>
+                                        </MenuFlyout>
+                                    </Button.Flyout>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Text="{Binding Titulo}" Grid.Row="0"/>
+                                        <TextBlock Text="{Binding Autor}" Grid.Row="1"
+                                           Opacity=".8" FontSize="12"/>
+                                    </Grid>
+                                </Button>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
                     </ListView>
 
 
