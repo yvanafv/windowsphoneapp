@@ -27,6 +27,7 @@ namespace MinhaEstante.ViewModel
             DeleteLivro = new ViewModel.DelegateCommand<Model.Livro>(Delete);
             UpdateLivro = new ViewModel.DelegateCommand<Model.Livro>(Update);
             EditLivro = new ViewModel.DelegateCommand<Model.Livro>(Edit);
+            EmprestarLivro = new ViewModel.DelegateCommand<Model.Livro>(Emprestar);
         }
 
         public ObservableCollection<Model.Livro> ListaDeLivros { get; private set; }
@@ -83,6 +84,21 @@ namespace MinhaEstante.ViewModel
             Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(typeof(View.NovoLivroPage), this);
 
+        }
+
+        public ICommand EmprestarLivro { get; set; }
+        public void Emprestar(Model.Livro Livro)
+        {
+            SelectedLivro = Livro;
+
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(View.NovoEmprestimoPage), this);
+
+        }
+
+        public Model.Livro ObterLivroPorCodigo(int codigo)
+        {
+            return ListaDeLivros.Where(i => i.ID == codigo).FirstOrDefault();
         }
     }
 }

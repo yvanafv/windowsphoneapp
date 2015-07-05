@@ -8,15 +8,44 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Margin="10">
-        <StackPanel Grid.Row="0">
-            <TextBlock Text="MINHA ESTANTE" 
-                       Style="{ThemeResource TitleTextBlockStyle}"
-                       Margin="0,12,0,0"/>
-            <TextBlock Text="novo empréstimo" 
-                       Margin="0,-6.5,0,26.5" 
-                       Style="{ThemeResource HeaderTextBlockStyle}" 
-                       CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="MinhaEstante" Margin="0,12,0,0"/>
+            <TextBlock Text="Empréstimo" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}"/>
         </StackPanel>
+        <Grid Grid.Row="1" Margin="19,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" Margin="0,12,0,12">
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Header="Livro" x:Name="NomeTextBox" DataContext="{Binding SelectedEmprestimo}" Text="{Binding Livro.Titulo, Mode=TwoWay}" 
+                             PlaceholderText="Selecione um livro" Width="300" IsEnabled="False"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Header="Usuário" x:Name="EmailTextBox" DataContext="{Binding SelectedEmprestimo}" Text="{Binding Email, Mode=TwoWay}" 
+                             PlaceholderText="Selecione um usuário" Width="300" IsEnabled="False"/>
+                    <AppBarButton Name="ButtonSelecionarUsuario"  Icon="Find" 
+                          CommandParameter="{Binding SelectedLivro}" 
+                          Click="ButtonSelecionarUsuario_Click" Height="50" Margin="0,25,0,0"/>
+                </StackPanel>
+
+                <ToggleSwitch Header="Data" Name="ToggleEmprestimoDataAtual" VerticalAlignment="Stretch" IsOn="True" OnContent="Hoje" OffContent="Data anterior" Toggled="ToggleEmprestimoDataAtual_Toggled"/>
+                <TextBox Name="TextBoxData" Visibility="Collapsed" DataContext="{Binding SelectedUsuario}" Text="{Binding Email, Mode=TwoWay}" PlaceholderText="Digite seu email"/>
+            </StackPanel>
+            
+        </Grid>
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Name="ButtonSalvar" Content="Salvar" Icon="Save" Command="{Binding UpdateEmprestimo}" 
+                          CommandParameter="{Binding SelectedEmprestimo}"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>

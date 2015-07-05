@@ -21,12 +21,11 @@ namespace MinhaEstante.Model
 
         [SQLite.Column("Email")]
         [SQLite.MaxLength(100)]
-        [SQLite.NotNull]
         public string Email { get; set; }
 
-        [SQLite.Column("Senha")]
-        [SQLite.MaxLength(100)]
-        [SQLite.NotNull]
+        //[SQLite.Column("Senha")]
+        //[SQLite.MaxLength(100)]
+        [SQLite.Ignore]
         public string Senha { get; set; }
         //public List<Livro> Livros { get; set; }
 

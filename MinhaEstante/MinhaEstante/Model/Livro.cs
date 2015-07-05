@@ -21,33 +21,42 @@ namespace MinhaEstante.Model
         [SQLite.Column("Autor")]
         [SQLite.MaxLength(100)]
         public string Autor { get; set; }
-        //public Editora Editora { get; set; }
-        //public int Edicao { get; set; }
-        //public bool Emprestado { get; set; }
-        //public bool Lido { get; set; }
-        //public bool Favorito { get; set; }
-        //public Usuario Usuario { get; set; }
+
+        private bool _emprestado;
+
+        [SQLite.Ignore]
+        public bool Emprestado
+        {
+            get
+            {
+                //if (ID.HasValue)
+                //{
+                //    var emprestimos = (new ViewModel.EmprestimoViewModel()).ObterEmprestimoPorLivro(ID.Value);
+                //    if (emprestimos != null)
+                //        _emprestado = emprestimos.Any(i => !i.DataDevolucao.HasValue);
+                //}
+                return _emprestado;
+            }
+            set { _emprestado = value; }
+        }
+
+        [SQLite.Column("Lido")]
+        public bool Lido { get; set; }
+
+        [SQLite.Column("Favorito")]
+        public bool Favorito { get; set; }
 
         public Livro()
         {
         }
 
-        public Livro(string titulo, string autor)
+        public Livro(string titulo, string autor, bool emprestado, bool lido, bool favorito)
         {
             this.Titulo = titulo;
             this.Autor = autor;
+            this.Emprestado = emprestado;
+            this.Lido = lido;
+            this.Favorito = favorito;
         }
-
-        //public Livro(string titulo, string autor, Editora editora, int edicao, bool emprestado, bool lido, bool favorito, Usuario usuario)
-        //{
-        //    Titulo = titulo;
-        //    Autor = autor;
-        //    Editora = editora;
-        //    Edicao = edicao;
-        //    Emprestado = emprestado;
-        //    Lido = lido;
-        //    Favorito = favorito;
-        //    Usuario = usuario;
-        //}
     }
 }

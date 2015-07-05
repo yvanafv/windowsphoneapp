@@ -19,7 +19,7 @@ namespace MinhaEstante.View
 
     public sealed partial class PivotPage : Page
     {
-        private ViewModel.LivroViewModel livroViewModel { get; set; }
+        private ViewModel.LivroViewModel LivroViewModel { get; set; }
 
         public PivotPage()
         {
@@ -33,19 +33,31 @@ namespace MinhaEstante.View
             var usuario = (Usuario) e.Parameter;
             if (usuario != null) NomeUsuarioTextBox.Text = "Bem vindo " + usuario.Nome.ToString() + "!";
 
-            this.livroViewModel = new ViewModel.LivroViewModel();
-            this.Livros.DataContext = this.livroViewModel;
+            this.LivroViewModel = new ViewModel.LivroViewModel();
+            this.Livros.DataContext = this.LivroViewModel;
         }
 
         private void AdicionarLivroButton_OnClick(object sender, RoutedEventArgs e)
         {
-            this.livroViewModel.EditLivro.Execute(new Model.Livro());
+            this.LivroViewModel.EditLivro.Execute(new Model.Livro());
  
         }
 
         private void RemoverLivroButton_OnClick(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
+        }
+
+        private void MenuFlyoutEmprestar_Click(object sender, RoutedEventArgs e)
+        {
+            Model.Emprestimo novoEmprestimo = new Emprestimo();
+            novoEmprestimo.Livro = (Model.Livro)((MenuFlyoutItem)e.OriginalSource).CommandParameter;
+
+            ViewModel.EmprestimoViewModel emprestimoViewModel = new ViewModel.EmprestimoViewModel();
+            emprestimoViewModel.SelectedEmprestimo = novoEmprestimo;
+
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(View.NovoEmprestimoPage), emprestimoViewModel);
         }
     }
 }

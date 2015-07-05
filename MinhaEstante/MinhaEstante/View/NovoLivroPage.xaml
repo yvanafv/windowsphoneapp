@@ -10,8 +10,11 @@
 
     <Grid Margin="10">
         <StackPanel Orientation="Vertical" Margin="0,12,0,12">
-            <TextBox Header="Nome" DataContext="{Binding SelectedLivro}" Text="{Binding Titulo, Mode=TwoWay}"/>
-            <TextBox Header="Email" DataContext="{Binding SelectedLivro}" Text="{Binding Autor, Mode=TwoWay}"/>
+            <TextBox Header="Titulo" DataContext="{Binding SelectedLivro}" Text="{Binding Titulo, Mode=TwoWay}"/>
+            <TextBox Header="Autor" DataContext="{Binding SelectedLivro}" Text="{Binding Autor, Mode=TwoWay}"/>
+            <ToggleSwitch VerticalAlignment="Stretch" OnContent="Lido" OffContent="Não lido" DataContext="{Binding SelectedLivro}" IsOn="{Binding Lido, Mode=TwoWay}" />
+            <ToggleSwitch VerticalAlignment="Stretch" OnContent="Favorito" OffContent="Não favorito" DataContext="{Binding SelectedLivro}" IsOn="{Binding Favorito, Mode=TwoWay}"/>
+            <ToggleSwitch Name="ToggleEmprestado" VerticalAlignment="Stretch" OnContent="Emprestado" OffContent="Na estante" Toggled="ToggleEmprestado_Toggled"/>
         </StackPanel>
     </Grid>
 

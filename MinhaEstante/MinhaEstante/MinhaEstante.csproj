@@ -89,9 +89,11 @@
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Model\Emprestimo.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="SQLiteAsync.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
+    <Compile Include="ViewModel\EmprestimoViewModel.cs" />
     <Compile Include="ViewModel\LivroViewModel.cs" />
     <Compile Include="ViewModel\UsuarioViewModel.cs" />
     <Compile Include="View\CadastroPage.xaml.cs">
@@ -111,8 +113,14 @@
     <Compile Include="View\NovoLivroPage.xaml.cs">
       <DependentUpon>NovoLivroPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\NovoUsuarioPage.xaml.cs">
+      <DependentUpon>NovoUsuarioPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PivotPage.xaml.cs">
       <DependentUpon>PivotPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SelecionaUsuarioPage.xaml.cs">
+      <DependentUpon>SelecionaUsuarioPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -146,10 +154,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\NovoLivroPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\NovoUsuarioPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PivotPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SelecionaUsuarioPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

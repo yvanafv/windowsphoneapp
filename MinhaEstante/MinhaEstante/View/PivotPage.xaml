@@ -30,6 +30,8 @@
                                 <Button>
                                     <Button.Flyout>
                                         <MenuFlyout>
+                                            <MenuFlyoutItem Text="Emprestar" Command="{Binding ElementName=Livros}" CommandParameter="{Binding}" Click="MenuFlyoutEmprestar_Click"/>
+                                            <MenuFlyoutSeparator/>
                                             <MenuFlyoutItem Text="Editar" Command="{Binding ElementName=Livros, Path=DataContext.EditLivro}" CommandParameter="{Binding}"/>
                                             <MenuFlyoutSeparator/>
                                             <MenuFlyoutItem Text="Excluir" Command="{Binding ElementName=Livros, Path=DataContext.DeleteLivro}" CommandParameter="{Binding}"/>
