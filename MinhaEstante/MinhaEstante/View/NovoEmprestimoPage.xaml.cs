@@ -85,20 +85,40 @@ namespace MinhaEstante.View
 
         private void ButtonSalvar_Click(object sender, RoutedEventArgs e)
         {
+            this.EmprestimoViewModel = new ViewModel.EmprestimoViewModel();
+            
             Model.Emprestimo emprestimo = (Model.Emprestimo)((AppBarButton)e.OriginalSource).CommandParameter;
+            emprestimo.CodigoLivro = emprestimo.Livro.ID.Value;
+            emprestimo.CodigoUsuario = emprestimo.Usuario.ID.Value;
 
-            if (ToggleEmprestimoDataAtual.IsOn)
-                emprestimo.DataEmprestimo = DateTime.Now;
+            if (this.EmprestimoViewModel.ListaDeEmprestimosAtivos.Exists(i => i.Livro.ID == emprestimo.CodigoLivro))
+                MessageBox.Show("Livro está emprestado.");
             else
             {
-                DateTime data;
-                if (DateTime.TryParse(TextBoxData.Text, out data))
-                    emprestimo.DataEmprestimo = data;
+                if (emprestimo.Usuario == null)
+                    MessageBox.Show("Selecione um usuário.");
                 else
-                    throw new Exception("Data invalida");
-            }
+                {
+                    if (ToggleEmprestimoDataAtual.IsOn)
+                        emprestimo.DataEmprestimo = DateTime.Now;
+                    else
+                    {
+                        DateTime data;
+                        if (DateTime.TryParse(TextBoxData.Text, out data))
+                            emprestimo.DataEmprestimo = data;
+                        else
+                            MessageBox.Show("Data inválida");
+                    }
 
-            this.EmprestimoViewModel.EmprestarLivro.Execute(emprestimo);
+                    this.EmprestimoViewModel.SalvarEmprestimo.Execute(emprestimo);
+                }
+            }
+        }
+
+        private void ButtonVoltar_Click(object sender, RoutedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.GoBack();
         }
     }
 }

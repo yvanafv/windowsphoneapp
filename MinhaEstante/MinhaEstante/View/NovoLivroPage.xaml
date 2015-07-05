@@ -20,8 +20,11 @@
 
     <Page.BottomAppBar>
         <CommandBar>
+            <AppBarButton Name="ButtonVoltar" Content="Voltar" Icon="Back"  Click="ButtonVoltar_Click" />
             <AppBarButton Content="Salvar" Icon="Save" Command="{Binding UpdateLivro}" 
                           CommandParameter="{Binding SelectedLivro}"/>
+            <AppBarButton Name="ButtonDetalhes" Content="Salvar" Icon="More" Click="ButtonDetalhes_Click" 
+                          Command="{Binding ElementName=SelectedLivro}" CommandParameter="{Binding}"/>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

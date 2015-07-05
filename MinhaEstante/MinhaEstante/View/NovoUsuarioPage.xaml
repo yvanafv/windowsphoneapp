@@ -31,6 +31,7 @@
 
     <Page.BottomAppBar>
         <CommandBar>
+            <AppBarButton Name="ButtonVoltar" Content="Voltar" Icon="Back"  Click="ButtonVoltar_Click" />
             <AppBarButton Content="Salvar" Icon="Save" Command="{Binding UpdateUsuario}" 
                           CommandParameter="{Binding SelectedUsuario}"/>
         </CommandBar>

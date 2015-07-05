@@ -62,14 +62,6 @@
                                   VerticalAlignment="Bottom"
                                   Click="AdicionarLivroButton_OnClick"/>
 
-                    <AppBarButton Grid.Row="2"
-                                  Icon="Remove"
-                                  Label="Remover livro"
-                                  Name="RemoverLivroButton"
-                                  HorizontalAlignment="Center"
-                                  VerticalAlignment="Bottom"
-                                  Margin="100,0,0,0" 
-                                  Click="RemoverLivroButton_OnClick"/>
                 </Grid>
             </PivotItem>
             <PivotItem Header="empréstimos">

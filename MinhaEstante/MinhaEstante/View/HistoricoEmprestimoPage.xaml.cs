@@ -23,12 +23,12 @@ namespace MinhaEstante.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class NovoUsuarioPage : Page
+    public sealed partial class HistoricoEmprestimoPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public NovoUsuarioPage()
+        public HistoricoEmprestimoPage()
         {
             this.InitializeComponent();
 
@@ -100,13 +100,18 @@ namespace MinhaEstante.View
         {
             this.navigationHelper.OnNavigatedTo(e);
 
-            this.DataContext = (ViewModel.UsuarioViewModel)e.Parameter;
-
+            Model.Livro livro = (Model.Livro)e.Parameter;
+            TextBlockAutor.Text = livro.Autor;
+            TextBlockLivro.Text = livro.Titulo;
+            this.Emprestimos.DataContext = livro; 
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             this.navigationHelper.OnNavigatedFrom(e);
+
+          
+
         }
 
         #endregion

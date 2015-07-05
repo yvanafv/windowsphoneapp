@@ -2,6 +2,9 @@
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using MinhaEstante.Model;
+using System;
+using Windows.UI.Popups;
+using MinhaEstante.Common;
 
 namespace MinhaEstante.View
 {
@@ -13,7 +16,6 @@ namespace MinhaEstante.View
         public MainPage()
         {
             this.InitializeComponent();
-
             this.NavigationCacheMode = NavigationCacheMode.Required;
         }
 
@@ -21,25 +23,22 @@ namespace MinhaEstante.View
         {
             //this.navigationHelper.OnNavigatedTo(e);
 
-            if (!string.IsNullOrEmpty(e.Parameter.ToString()))
+            if (e.Parameter != null && !string.IsNullOrEmpty(e.Parameter.ToString()))
                 this.DataContext = (ViewModel.UsuarioViewModel)e.Parameter;
         }
 
-        private bool VerificarLogin()
-        {
-
-
-            return !string.IsNullOrEmpty(UsuarioTextBox.Text)
-                   && !string.IsNullOrEmpty(SenhaPasswordBox.Password)
-                   && UsuarioTextBox.Text == "admin"
-                   && SenhaPasswordBox.Password == "admin";
-        }
-
-
         public void LoginButton_OnClick(object sender, RoutedEventArgs e)
         {
-            this.UsuarioViewModel = new ViewModel.UsuarioViewModel();
-            this.UsuarioViewModel.LoginUsuario.Execute(new Usuario(UsuarioTextBox.Text, SenhaPasswordBox.Password));
+            try
+            {
+                this.UsuarioViewModel = new ViewModel.UsuarioViewModel();
+                this.UsuarioViewModel.LoginUsuario.Execute(new Usuario(UsuarioTextBox.Text, SenhaPasswordBox.Password));
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void CadastrarButton_OnClick(object sender, RoutedEventArgs e)

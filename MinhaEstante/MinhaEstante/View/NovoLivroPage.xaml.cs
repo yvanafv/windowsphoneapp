@@ -54,5 +54,19 @@ namespace MinhaEstante.View
 
             this.DataContext = (ViewModel.LivroViewModel)e.Parameter;
         }
+
+        private void ButtonDetalhes_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.LivroViewModel livroViewModel = (ViewModel.LivroViewModel)((AppBarButton)e.OriginalSource).CommandParameter;
+
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(View.HistoricoEmprestimoPage), livroViewModel.SelectedLivro);
+        }
+
+        private void ButtonVoltar_Click(object sender, RoutedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.GoBack();
+        }
     }
 }

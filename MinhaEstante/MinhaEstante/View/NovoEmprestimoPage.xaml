@@ -36,7 +36,7 @@
                 </StackPanel>
 
                 <ToggleSwitch Header="Data" Name="ToggleEmprestimoDataAtual" VerticalAlignment="Stretch" IsOn="True" OnContent="Hoje" OffContent="Data anterior" Toggled="ToggleEmprestimoDataAtual_Toggled"/>
-                <TextBox Name="TextBoxData" Visibility="Collapsed" DataContext="{Binding SelectedUsuario}" Text="{Binding Email, Mode=TwoWay}" PlaceholderText="Digite seu email"/>
+                <TextBox Name="TextBoxData" Visibility="Collapsed" PlaceholderText="Digite a data"/>
             </StackPanel>
             
         </Grid>
@@ -44,8 +44,9 @@
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Name="ButtonSalvar" Content="Salvar" Icon="Save" Command="{Binding SalvarEmprestimo}" 
-                          CommandParameter="{Binding SelectedEmprestimo}"/>
+            <AppBarButton Name="ButtonVoltar" Content="Voltar" Icon="Back"  Click="ButtonVoltar_Click" />
+            <AppBarButton Name="ButtonSalvar" Content="Salvar" Icon="Save" Click="ButtonSalvar_Click" 
+                          Command="{Binding ElementName=SelectedEmprestimo}" CommandParameter="{Binding}" DataContext="{Binding SelectedEmprestimo}"/>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

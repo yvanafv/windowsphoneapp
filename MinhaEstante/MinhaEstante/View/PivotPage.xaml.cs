@@ -47,11 +47,6 @@ namespace MinhaEstante.View
  
         }
 
-        private void RemoverLivroButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void MenuFlyoutEmprestar_Click(object sender, RoutedEventArgs e)
         {
             Model.Emprestimo novoEmprestimo = new Emprestimo();

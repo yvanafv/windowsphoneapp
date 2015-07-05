@@ -95,10 +95,6 @@ namespace MinhaEstante.ViewModel
         public ICommand SalvarEmprestimo { get; set; }
         private void Salvar(Model.Emprestimo emprestimo)
         {
-            emprestimo.DataEmprestimo = DateTime.Now;
-            emprestimo.CodigoLivro = emprestimo.Livro.ID.Value;
-            emprestimo.CodigoUsuario = emprestimo.Usuario.ID.Value;
-
             using (var db = new SQLite.SQLiteConnection(DB_PATH))
             {
                 db.CreateTable<Model.Emprestimo>();
@@ -120,9 +116,10 @@ namespace MinhaEstante.ViewModel
             rootFrame.Navigate(typeof(View.PivotPage));
         }
 
-        public IList<Model.Emprestimo> ObterEmprestimoPorLivro(int codigoLivro)
+        public IList<Model.Emprestimo> ListarTodosEmprestimos(int codigoLivro)
         {
             return ListaDeEmprestimos.Where(i => i.CodigoLivro == codigoLivro).ToList();
         }
+
     }
 }

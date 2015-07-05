@@ -31,13 +31,29 @@ namespace MinhaEstante.Model
             {
                 if (ID.HasValue)
                 {
-                    var emprestimos = (new ViewModel.EmprestimoViewModel()).ObterEmprestimoPorLivro(ID.Value);
+                    var emprestimos = (new ViewModel.EmprestimoViewModel()).ListarTodosEmprestimos(ID.Value);
                     if (emprestimos != null)
                         _emprestado = emprestimos.Any(i => !i.DataDevolucao.HasValue);
                 }
                 return _emprestado;
             }
             set { _emprestado = value; }
+        }
+
+        private List<Emprestimo> _historicoEmprestimos;
+
+        [SQLite.Ignore]
+        public List<Emprestimo> HistoricoEmprestimos
+        {
+            get
+            {
+                if (_historicoEmprestimos == null)
+                {
+                    _historicoEmprestimos = (new ViewModel.EmprestimoViewModel()).ListarTodosEmprestimos(ID.Value).ToList();
+                }
+                return _historicoEmprestimos;
+            }
+            set { _historicoEmprestimos = value; }
         }
 
         [SQLite.Column("Lido")]

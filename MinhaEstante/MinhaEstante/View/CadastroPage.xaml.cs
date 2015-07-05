@@ -138,7 +138,7 @@ namespace MinhaEstante.View
 
         private void ButtonCancelar_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(PivotPage), new Usuario(NomeTextBox.Text, EmailTextBox.Text, SenhaPasswordBox.Password));
+            Frame.Navigate(typeof(MainPage));
  
         }
     }
