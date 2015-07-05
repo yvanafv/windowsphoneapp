@@ -23,9 +23,8 @@ namespace MinhaEstante.Model
         [SQLite.MaxLength(100)]
         public string Email { get; set; }
 
-        //[SQLite.Column("Senha")]
-        //[SQLite.MaxLength(100)]
-        [SQLite.Ignore]
+        [SQLite.Column("Senha")]
+        [SQLite.MaxLength(100)]
         public string Senha { get; set; }
         //public List<Livro> Livros { get; set; }
 
@@ -33,9 +32,9 @@ namespace MinhaEstante.Model
         {
         }
 
-        public Usuario(string email, string senha)
+        public Usuario(string nome, string senha)
         {
-            this.Email = email;
+            this.Nome = nome;
             this.Senha = senha;
         }
 

@@ -29,12 +29,12 @@ namespace MinhaEstante.Model
         {
             get
             {
-                //if (ID.HasValue)
-                //{
-                //    var emprestimos = (new ViewModel.EmprestimoViewModel()).ObterEmprestimoPorLivro(ID.Value);
-                //    if (emprestimos != null)
-                //        _emprestado = emprestimos.Any(i => !i.DataDevolucao.HasValue);
-                //}
+                if (ID.HasValue)
+                {
+                    var emprestimos = (new ViewModel.EmprestimoViewModel()).ObterEmprestimoPorLivro(ID.Value);
+                    if (emprestimos != null)
+                        _emprestado = emprestimos.Any(i => !i.DataDevolucao.HasValue);
+                }
                 return _emprestado;
             }
             set { _emprestado = value; }

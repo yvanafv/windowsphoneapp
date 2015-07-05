@@ -20,6 +20,7 @@ namespace MinhaEstante.View
     public sealed partial class PivotPage : Page
     {
         private ViewModel.LivroViewModel LivroViewModel { get; set; }
+        private ViewModel.EmprestimoViewModel EmprestimoViewModel { get; set; }
 
         public PivotPage()
         {
@@ -35,6 +36,9 @@ namespace MinhaEstante.View
 
             this.LivroViewModel = new ViewModel.LivroViewModel();
             this.Livros.DataContext = this.LivroViewModel;
+
+            this.EmprestimoViewModel = new ViewModel.EmprestimoViewModel();
+            this.Emprestimos.DataContext = this.EmprestimoViewModel;
         }
 
         private void AdicionarLivroButton_OnClick(object sender, RoutedEventArgs e)

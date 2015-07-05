@@ -35,8 +35,8 @@ namespace MinhaEstante.Model
         {
             get 
             {
-                //if (_livro == null)
-                //    _livro = (new ViewModel.LivroViewModel()).ObterLivroPorCodigo(CodigoLivro);
+                if (_livro == null)
+                    _livro = (new ViewModel.LivroViewModel()).ObterLivroPorCodigo(CodigoLivro);
                 return _livro; 
             }
             set { _livro = value; }
@@ -47,8 +47,8 @@ namespace MinhaEstante.Model
         {
             get
             {
-                //if (_usuario == null)
-                //    _usuario = (new ViewModel.UsuarioViewModel()).ObterLivroPorCodigo(CodigoLivro);
+                if (_usuario == null)
+                    _usuario = (new ViewModel.UsuarioViewModel()).ObterUsuarioPorCodigo(CodigoUsuario);
                 return _usuario;
             }
             set { _usuario = value; }

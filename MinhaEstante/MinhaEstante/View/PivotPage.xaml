@@ -74,7 +74,35 @@
             </PivotItem>
             <PivotItem Header="empréstimos">
                 <Grid>
+                    <ListView Name="Emprestimos" ItemsSource="{Binding ListaDeEmprestimosAtivos, Mode=TwoWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Button>
+                                    <Button.Flyout>
+                                        <MenuFlyout>
+                                            <MenuFlyoutItem Text="Ver" Command="{Binding ElementName=Emprestimos, Path=DataContext.VisualizarEmprestimo}" CommandParameter="{Binding}"></MenuFlyoutItem>
+                                            <MenuFlyoutSeparator/>
+                                            <MenuFlyoutItem Text="Devolver" Command="{Binding ElementName=Emprestimos, Path=DataContext.DevolverLivro}" CommandParameter="{Binding}"/>
+                                            <MenuFlyoutSeparator/>
+                                        </MenuFlyout>
+                                    </Button.Flyout>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
 
+                                        <TextBlock Text="{Binding Livro.Titulo}" Grid.Row="0"/>
+                                        <TextBlock Text="{Binding Usuario.Nome}" Grid.Row="1"
+                                           Opacity=".8" FontSize="12"/>
+                                        <TextBlock Text="{Binding DataEmprestimo}" Grid.Row="2"
+                                           Opacity=".8" FontSize="12"/>
+                                    </Grid>
+                                </Button>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </Grid>
             </PivotItem>
         </Pivot>

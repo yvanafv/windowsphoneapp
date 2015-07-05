@@ -14,15 +14,14 @@
             <TextBox Header="Autor" DataContext="{Binding SelectedLivro}" Text="{Binding Autor, Mode=TwoWay}"/>
             <ToggleSwitch VerticalAlignment="Stretch" OnContent="Lido" OffContent="Não lido" DataContext="{Binding SelectedLivro}" IsOn="{Binding Lido, Mode=TwoWay}" />
             <ToggleSwitch VerticalAlignment="Stretch" OnContent="Favorito" OffContent="Não favorito" DataContext="{Binding SelectedLivro}" IsOn="{Binding Favorito, Mode=TwoWay}"/>
-            <ToggleSwitch Name="ToggleEmprestado" VerticalAlignment="Stretch" OnContent="Emprestado" OffContent="Na estante" Toggled="ToggleEmprestado_Toggled"/>
+            <ToggleSwitch Name="ToggleEmprestado" VerticalAlignment="Stretch" OnContent="Emprestado" OffContent="Na estante" DataContext="{Binding SelectedLivro}" IsOn="{Binding Emprestado, Mode=TwoWay}" IsEnabled="False"/>
         </StackPanel>
     </Grid>
 
     <Page.BottomAppBar>
         <CommandBar>
             <AppBarButton Content="Salvar" Icon="Save" Command="{Binding UpdateLivro}" 
-                          CommandParameter="{Binding SelectedLivro}" 
-                          Click="AppBarButton_Click"/>
+                          CommandParameter="{Binding SelectedLivro}"/>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

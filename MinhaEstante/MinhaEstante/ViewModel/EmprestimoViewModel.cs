@@ -23,11 +23,19 @@ namespace MinhaEstante.ViewModel
 
             ListaDeEmprestimos = GetAllEmprestimos();
 
+            ListaDeEmprestimosAtivos = ListaDeEmprestimos.Where(i => !i.DataDevolucao.HasValue).ToList();
+
+            SalvarEmprestimo = new ViewModel.DelegateCommand<Model.Emprestimo>(Salvar);
+            DevolverLivro = new ViewModel.DelegateCommand<Model.Emprestimo>(Devolver);
+            VisualizarEmprestimo = new ViewModel.DelegateCommand<Model.Emprestimo>(Visualizar); 
+
         }
 
         public Model.Emprestimo SelectedEmprestimo { get; set; }
 
         public ObservableCollection<Model.Emprestimo> ListaDeEmprestimos { get; private set; }
+
+        public List<Model.Emprestimo> ListaDeEmprestimosAtivos { get; private set; }
 
         public ObservableCollection<Model.Emprestimo> GetAllEmprestimos()
         {
@@ -47,14 +55,69 @@ namespace MinhaEstante.ViewModel
 
         }
 
-        public ICommand DevolverLivro { get; set; }
-        public void Devolver(Model.Emprestimo Emprestimo)
+        public ICommand VisualizarEmprestimo { get; set; }
+        public void Visualizar(Model.Emprestimo emprestimo)
         {
-            SelectedEmprestimo = Emprestimo;
+            SelectedEmprestimo = emprestimo;
 
             Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(typeof(View.NovoEmprestimoPage), this);
 
+        }
+
+        public ICommand DevolverLivro { get; set; }
+        public void Devolver(Model.Emprestimo emprestimo)
+        {
+            emprestimo.DataDevolucao = DateTime.Now;
+
+            using (var db = new SQLite.SQLiteConnection(DB_PATH))
+            {
+                db.CreateTable<Model.Emprestimo>();
+            }
+
+            using (var db = new SQLite.SQLiteConnection(DB_PATH))
+            {
+                if (db.InsertOrReplace(emprestimo) > 0)
+                {
+                    int index = this.ListaDeEmprestimos.IndexOf(emprestimo);
+                    if (index > -1)
+                        this.ListaDeEmprestimos[index] = emprestimo;
+                    else
+                        this.ListaDeEmprestimos.Add(emprestimo);
+                }
+            }
+
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(View.PivotPage));
+
+        }
+
+        public ICommand SalvarEmprestimo { get; set; }
+        private void Salvar(Model.Emprestimo emprestimo)
+        {
+            emprestimo.DataEmprestimo = DateTime.Now;
+            emprestimo.CodigoLivro = emprestimo.Livro.ID.Value;
+            emprestimo.CodigoUsuario = emprestimo.Usuario.ID.Value;
+
+            using (var db = new SQLite.SQLiteConnection(DB_PATH))
+            {
+                db.CreateTable<Model.Emprestimo>();
+            }
+
+            using (var db = new SQLite.SQLiteConnection(DB_PATH))
+            {
+                if (db.InsertOrReplace(emprestimo) > 0)
+                {
+                    int index = this.ListaDeEmprestimos.IndexOf(emprestimo);
+                    if (index > -1)
+                        this.ListaDeEmprestimos[index] = emprestimo;
+                    else
+                        this.ListaDeEmprestimos.Add(emprestimo);
+                }
+            }
+
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(View.PivotPage));
         }
 
         public IList<Model.Emprestimo> ObterEmprestimoPorLivro(int codigoLivro)

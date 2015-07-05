@@ -33,9 +33,8 @@
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Content="Salvar" Icon="Accept" Command="{Binding UpdateContato}" Click="AppBarButtonSalvar_Click"
-                          CommandParameter="{Binding SelectedUsuario}" Margin="0,0,80,0"/>
-            <AppBarButton Content="Cancelar" Icon="Cancel" Click="AppBarButtonCancelar_Click"/>
+            <AppBarButton Content="Salvar" Icon="Accept" Click="ButtonSalvar_Click" Margin="0,0,80,0"/>
+            <AppBarButton Content="Cancelar" Icon="Cancel" Click="ButtonCancelar_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 

@@ -38,6 +38,7 @@
 
             <TextBox x:Name="UsuarioTextBox"
         		     Grid.Row="0" 
+                     DataContext="{Binding SelectedUsuario}" Text="{Binding Nome, Mode=TwoWay}"
         		     PlaceholderText="Digite seu usuário..." 
         		     Header="USUÁRIO"/>
 

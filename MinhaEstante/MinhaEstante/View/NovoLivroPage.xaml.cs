@@ -54,21 +54,5 @@ namespace MinhaEstante.View
 
             this.DataContext = (ViewModel.LivroViewModel)e.Parameter;
         }
-
-        private void AppBarButton_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void ToggleEmprestado_Toggled(object sender, RoutedEventArgs e)
-        {
-            ViewModel.LivroViewModel livro = (ViewModel.LivroViewModel)this.DataContext;
-          
-            if (ToggleEmprestado.IsOn && !livro.SelectedLivro.Emprestado)
-            {
-                Frame rootFrame = Window.Current.Content as Frame;
-                rootFrame.Navigate(typeof(View.NovoEmprestimoPage), livro);
-            }
-        }
     }
 }

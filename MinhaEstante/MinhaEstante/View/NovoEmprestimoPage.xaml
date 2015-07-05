@@ -28,7 +28,7 @@
                              PlaceholderText="Selecione um livro" Width="300" IsEnabled="False"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox Header="Usuário" x:Name="EmailTextBox" DataContext="{Binding SelectedEmprestimo}" Text="{Binding Email, Mode=TwoWay}" 
+                    <TextBox Header="Usuário" x:Name="EmailTextBox" DataContext="{Binding SelectedEmprestimo}" Text="{Binding Usuario.Nome, Mode=TwoWay}" 
                              PlaceholderText="Selecione um usuário" Width="300" IsEnabled="False"/>
                     <AppBarButton Name="ButtonSelecionarUsuario"  Icon="Find" 
                           CommandParameter="{Binding SelectedLivro}" 
@@ -44,7 +44,7 @@
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Name="ButtonSalvar" Content="Salvar" Icon="Save" Command="{Binding UpdateEmprestimo}" 
+            <AppBarButton Name="ButtonSalvar" Content="Salvar" Icon="Save" Command="{Binding SalvarEmprestimo}" 
                           CommandParameter="{Binding SelectedEmprestimo}"/>
         </CommandBar>
     </Page.BottomAppBar>

@@ -29,7 +29,7 @@ namespace MinhaEstante.View
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
-        private ViewModel.UsuarioViewModel usuarioViewModel { get; set; }
+        private ViewModel.UsuarioViewModel UsuarioViewModel { get; set; }
 
         public CadastroPage()
         {
@@ -130,13 +130,13 @@ namespace MinhaEstante.View
         //}
 
         //Usando método Click do botão
-        private void AppBarButtonSalvar_Click(object sender, RoutedEventArgs e)
+        private void ButtonSalvar_Click(object sender, RoutedEventArgs e)
         {
-            //Frame.Navigate(typeof(PivotPage), new Usuario(NomeTextBox.Text, EmailTextBox.Text, SenhaPasswordBox.Password));
-            this.usuarioViewModel.EditUsuario.Execute(new Model.Usuario());
+            this.UsuarioViewModel = new ViewModel.UsuarioViewModel();
+            this.UsuarioViewModel.SalvarUsuarioAcesso.Execute(new Usuario(NomeTextBox.Text, EmailTextBox.Text, SenhaPasswordBox.Password));
         }
 
-        private void AppBarButtonCancelar_Click(object sender, RoutedEventArgs e)
+        private void ButtonCancelar_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(PivotPage), new Usuario(NomeTextBox.Text, EmailTextBox.Text, SenhaPasswordBox.Password));
  
