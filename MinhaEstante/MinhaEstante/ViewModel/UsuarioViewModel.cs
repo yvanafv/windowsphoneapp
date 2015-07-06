@@ -31,6 +31,7 @@ namespace MinhaEstante.ViewModel
             EditUsuario = new ViewModel.DelegateCommand<Model.Usuario>(Edit);
             SalvarUsuarioAcesso = new ViewModel.DelegateCommand<Model.Usuario>(Salvar);
             LoginUsuario = new ViewModel.DelegateCommand<Model.Usuario>(Logar);
+            SelecionarUsuarioParaEmprestimo = new ViewModel.DelegateCommand<Model.Usuario>(SelecionarParaEmprestimo);
         }
 
         public List<Model.Usuario> ListaDeUsuarios { get; private set; }
@@ -115,6 +116,15 @@ namespace MinhaEstante.ViewModel
             }
             else
                 throw new Exception("Usuário ou senha inválidos.");
+        }
+
+        public ICommand SelecionarUsuarioParaEmprestimo { get; set; }
+        public void SelecionarParaEmprestimo(Model.Usuario Usuario)
+        {
+            SelectedUsuario = Usuario;
+
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.Navigate(typeof(View.NovoEmprestimoPage), SelectedUsuario);
         }
 
         public Model.Usuario ObterUsuarioPorCodigo(int codigo)

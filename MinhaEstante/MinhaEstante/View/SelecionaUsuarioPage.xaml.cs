@@ -124,11 +124,5 @@ namespace MinhaEstante.View
             this.UsuarioViewModel.EditUsuario.Execute(new Model.Usuario());
         }
 
-        private void ButtonSelecionarItem_Click(object sender, RoutedEventArgs e)
-        {
-            Frame rootFrame = Window.Current.Content as Frame;
-            rootFrame.Navigate(typeof(View.NovoEmprestimoPage));
-        }
-
     }
 }

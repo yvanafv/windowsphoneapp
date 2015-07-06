@@ -52,11 +52,24 @@ namespace MinhaEstante.View
         {
             this.navigationHelper.OnNavigatedTo(e);
 
+            Windows.Storage.ApplicationDataContainer roamingSettings = Windows.Storage.ApplicationData.Current.RoamingSettings;
             ViewModel.EmprestimoViewModel emprestimo = new ViewModel.EmprestimoViewModel();
-            emprestimo = (ViewModel.EmprestimoViewModel)e.Parameter;
-            ViewModel.UsuarioViewModel usuario = new ViewModel.UsuarioViewModel();
-            emprestimo.SelectedEmprestimo.Usuario = usuario.ListaDeUsuarios.FirstOrDefault();
-
+            emprestimo.SelectedEmprestimo = new Model.Emprestimo();
+            if (e.Parameter.GetType() == typeof(ViewModel.EmprestimoViewModel))
+            {
+                emprestimo = (ViewModel.EmprestimoViewModel)e.Parameter;
+                roamingSettings.Values["Livro"] = emprestimo.SelectedEmprestimo.Livro.ID.Value;
+            }
+            else
+            {
+                if (roamingSettings.Values.ContainsKey("Livro"))
+                {
+                    var codigoLivro = Convert.ToInt32(roamingSettings.Values["Livro"].ToString());
+                    emprestimo.SelectedEmprestimo.Livro = (new ViewModel.LivroViewModel()).ObterLivroPorCodigo(codigoLivro);
+                }
+                emprestimo.SelectedEmprestimo.Usuario = (Model.Usuario)e.Parameter;
+            }
+                 
             if (emprestimo.SelectedEmprestimo.ID.HasValue)
                 ButtonSalvar.IsEnabled = false;
             else

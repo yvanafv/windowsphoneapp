@@ -32,7 +32,7 @@
             <ListView Name="Usuarios" ItemsSource="{Binding ListaDeUsuarios, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Button Click="ButtonSelecionarItem_Click">
+                        <Button Command="{Binding ElementName=Usuarios, Path=DataContext.SelecionarUsuarioParaEmprestimo}" CommandParameter="{Binding}">
                             <Grid>
                                 <TextBlock Text="{Binding Nome}" Grid.Row="0"/>
                             </Grid>
